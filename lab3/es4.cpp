@@ -15,7 +15,7 @@ class myvector {
 
     ~myvector() { delete[] elem;}
 
-    // non const
+    // not const
     double& operator[](int n) { return elem[n];}
 
     // const
