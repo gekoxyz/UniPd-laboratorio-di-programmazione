@@ -3,7 +3,7 @@
 using namespace std;
 
 bool is_palindrome(const string& s);
-bool is_palindrome(char (&str)[4], int length);
+bool is_palindrome(const char s[], int length);
 bool is_palindrome(const char* first, const char* last);
 
 int main() {
@@ -12,8 +12,10 @@ int main() {
   cout << "itopinonavevanonipoti " << is_palindrome("itopinonavevanonipoti") << endl;
   cout << endl;
   cout << "metodo 2:" << endl;
-  char str[] = {'a', 'n', 'n', 'a'}; 
-  cout << is_palindrome(str, sizeof(str)/sizeof(str[0])) << endl;
+  string temp = "boh";
+  cout << "boh " << is_palindrome(temp.c_str(), temp.length()) << endl;
+  temp = "itopinonavevanonipoti";
+  cout << "itopinonavevanonipoti " << is_palindrome(temp.c_str(), temp.length()) << endl;
   cout << endl;
   cout << "metodo 3:" << endl;
   string s = "boh";
@@ -32,8 +34,11 @@ bool is_palindrome(const string& s) {
   return true;
 }
 
-bool is_palindrome(char (&str)[4], int length) {
-  return false;
+bool is_palindrome(const char s[], int length) {
+  for (int i = 0; i < length/2; i++) {
+    if (s[i] != s[length - i - 1]) return false;
+  }
+  return true;
 }
 
 bool is_palindrome(const char* first, const char* last) {
