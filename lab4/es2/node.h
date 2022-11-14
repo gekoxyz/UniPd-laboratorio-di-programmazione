@@ -2,7 +2,7 @@
 
 using namespace std;
 
-class node{
+class node {
   private:
   node* prev;
   node* next;

@@ -1,11 +1,17 @@
 #include <iostream>
 #include <string>
-#include "node.cpp"
+#include "node.hpp"
 
 using namespace std;
 
 int main() {
-  node* disney = new node("Pippo");
-  // disney = disney->insert(nullptr, new node("Paperino"));
+  node pippo = node("pippo");
+  pippo.print_all();
+  node paperino = node("paperino");
+  pippo.insert(&paperino);
+  paperino.print_all();
+  node pluto = node("pluto");
+  paperino.add(&pluto);
+  pippo.print_all();
   return 0;
 }
