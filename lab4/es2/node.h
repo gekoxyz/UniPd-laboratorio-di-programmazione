@@ -17,11 +17,11 @@ class node {
   node* add(node* n); // inserimento dopo this 
   node* erase(); // rimuove this
   node* find(const string& to_find);
-  node* advance(int n) const;
+  node* advance(int n);
   void print_all();
 
-  void push_back(string to_push);
-  void push_front(string to_push);
+  node* push_back(string to_push);
+  node* push_front(string to_push);
 
   string pop_back();
   string pop_front();
