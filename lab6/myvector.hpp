@@ -58,6 +58,33 @@ template <typename T>
 T myvector<T>::operator[](int index) const { return elem_pointer[index];}
 
 template <typename T>
+myvector<T>& myvector<T>::operator=(const myvector &new_vector) {
+    if (this->max_elements < new_vector.max_elements) {
+        T *new_elem_pointer = new T[new_vector.max_elements];
+        std::copy(new_vector.elem_pointer, new_vector.elem_pointer + new_vector.elements, new_elem_pointer);
+        delete[] elem_pointer;
+        elem_pointer = new_elem_pointer;
+        elements = new_vector.elements;
+        max_elements = new_vector.max_elements;
+    }
+    std::copy(new_vector.elem_pointer, new_vector.elem_pointer + new_vector.elements, elem_pointer);
+    elements = new_vector.elements;
+    max_elements = new_vector.max_elements;
+    return *this;
+}
+
+// deleting this pointer data, pointing this to new data and deleting new pointer
+template <typename T>
+myvector<T>& myvector<T>::operator=(myvector &&new_vector) {
+    delete[] elem_pointer;
+    elem_pointer = new_vector.elem_pointer;
+    new_vector.elem_pointer = nullptr;
+    elements = new_vector.elements;
+    max_elements = new_vector.max_elements;
+    return *this;
+}
+
+template <typename T>
 void myvector<T>::set(const int index, const T new_elem) {
     if (index >= 0 && index < elements) elem_pointer[index] = new_elem;
 }

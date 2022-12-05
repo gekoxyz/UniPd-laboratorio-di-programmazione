@@ -45,6 +45,16 @@ int main() {
     vs.pop_back();
     cout << vs << endl;
 
+    // test operator= 
+    myvector<double> v2 = {0, 1, 2, 3, 4};
+    cout << v << endl;
+    cout << v2 << endl;
+    v = v2;
+    cout << v << endl;
+    cout << v2 << endl;
+    v = {1, 1, 1, 1};
+    cout << v << endl;
+
     myvector<int> boh{};
     cout << boh.size() << endl;
 
