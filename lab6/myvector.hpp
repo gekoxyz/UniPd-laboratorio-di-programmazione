@@ -69,7 +69,7 @@ T myvector<T>::get(const int index) {
 }
 
 template <typename T>
-T& myvector<T>::at(const int index) {
+T& myvector<T>::at(int index) {
     if (index >= 0 && index < elements) return elem_pointer[index];
     throw invalid_parameter();
 }

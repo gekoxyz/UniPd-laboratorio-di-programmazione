@@ -24,8 +24,11 @@ int main() {
     cout << v << endl;
 
     cout << "ADDRESS OF 7" << endl;
-    v.at(5);
+    cout << &v.at(5) << endl;
+    v.at(6) = 9;
 
+    cout << v << endl;
+    
     myvector<string> vs(5);
     for (int i = 0; i < vs.size(); i++)
         vs.set(i, "___");

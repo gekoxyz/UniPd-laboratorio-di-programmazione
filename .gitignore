@@ -33,3 +33,5 @@
 
 # OSX file
 .DS_Store
+# vscode folder
+.vscode
