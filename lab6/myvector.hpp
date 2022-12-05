@@ -79,7 +79,7 @@ template<typename T>
 void myvector<T>::reserve() {
     max_elements *= 2;
     T* new_elem_pointer = new T[max_elements];
-    copy(elem_pointer, elem_pointer + max_elements, new_elem_pointer);
+    copy(elem_pointer, elem_pointer + elements, new_elem_pointer);
     delete[] elem_pointer;
     elem_pointer = new_elem_pointer;
 }
