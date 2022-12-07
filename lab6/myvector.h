@@ -25,7 +25,8 @@ public:
     // overload operatori
     T &operator[](int index);
     T operator[](int index) const;
-
+    myvector<T>& operator=(const myvector &new_vector);
+    myvector<T>& operator=(myvector &&new_vector);
     int size() const { return elements; };
 
     void set(const int index, const T new_elem);
