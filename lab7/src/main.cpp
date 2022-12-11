@@ -23,11 +23,6 @@ int main() {
     cout << "creating random robot" << endl;
     randomrobot randomrobot;
     cout << "calling move of randomrobot" << endl;
-    // while(!maze.finished()) {
-    //     // cout << "CURRENT -> " << maze.current().to_string() << endl;
-    //     randomrobot.move(maze);
-    //     maze.print_maze();
-    // }
     while (!maze.finished()) {
         randomrobot.move(maze);
         maze.print_maze();

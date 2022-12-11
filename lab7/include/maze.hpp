@@ -23,15 +23,6 @@ maze::maze(std::string filename) {
     }
     current_ = start_;
     maze_reader.close();
-    
-    std::cout << "PARSED MAZE" << std::endl;
-    std::cout << "START: " << start_.x() << " " << start_.y() << std::endl;
-    std::cout << "END: " << end_.x() << " " << end_.y() << std::endl;
-    // TODO: IMPLEMENT FLEXIBLE NUMBER OF ROWS AND COLUMNS
-    std::cout << sizeof(maze_)/sizeof(maze_[0]) << std::endl;
-    std::cout << sizeof(maze_[0])/sizeof(char) << std::endl;
-    
-    print_maze();
 }
 
 std::vector<position> maze::possible_moves() {
@@ -39,8 +30,9 @@ std::vector<position> maze::possible_moves() {
     // analyze current position and return possible moves by checking current_'s surrounding cells
     int row = current_.x(); // the x position is the row index
     int col = current_.y(); // the y position is the col index 
-    // std::cout << maze_[row][col] << std::endl; // current
     // i need to check if right is a good position (NOT OUT OF BOUNDS and reachable)
+    // currently the only obstacle is the wall (*) , so the algorithm just checks
+    // that you are not going into a wall
     if (col + 1 <= 9) {
         char cell = maze_[row][col + 1]; // next column same row -> right
         if (cell != '*') {
@@ -73,8 +65,10 @@ std::vector<position> maze::possible_moves() {
 }
 
 void maze::print_maze() {
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 9; j++) {
+    short row_index = sizeof(maze_)/sizeof(maze_[0]);
+    short col_index = sizeof(maze_[0])/sizeof(char);
+    for (short i = 0; i < row_index; i++) {
+        for (short j = 0; j < col_index; j++) {
             if (position(i, j) == current_) {
                 std::cout << 'C';
             } else {
