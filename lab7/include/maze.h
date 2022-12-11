@@ -6,34 +6,24 @@
 #ifndef MAZE_H
 #define MAZE_H
 
-#include <string>
-#include <iostream>
-#include <fstream>
-class position {
-public:
-    position() {}
-    position(int x, int y) {
-        x_ = x;
-        y_ = y;
-    }
-    int x() { return x_; }
-    int y() { return y_; }
+#include "position.h"
 
-private:
-    int x_;
-    int y_;
-};
+#include <string>
+#include <vector>
 
 class maze {
     public:
     // maze.txt is the default maze, specify a new maze if you want a new maze
     maze(std::string filename = "./../assets/maze.txt");
+    std::vector<position> possible_moves();
+    void print_maze();
 
     private:
     std::string filename_;
-    char maze_[9][9];
+    char maze_[8][9];
     position start_;
     position end_;
+    position current_;
 };
 
 #include "maze.hpp"

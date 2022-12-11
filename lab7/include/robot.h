@@ -5,8 +5,14 @@
 */
 #ifndef ROBOT_H
 #define ROBOT_H
+
+#include "maze.h"
+#include "position.h"
+
 class robot {
-    public:
-    private:
+public:
+    virtual position move(maze &maze);
+
+private:
 };
 #endif

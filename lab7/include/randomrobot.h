@@ -9,7 +9,12 @@
 #include "robot.h"
 
 class randomrobot : public robot {
-    public:
-    private:
+public:
+    position move(maze &maze);
+
+private:
 };
+
+#include "randomrobot.hpp"
+
 #endif
