@@ -35,43 +35,36 @@ maze::maze(std::string filename) {
 }
 
 std::vector<position> maze::possible_moves() {
-    // position north(0,0);  STANDARD POSITION
     std::vector<position> possible_moves;
-    // analyze current position and return possible moves
-    std::cout << current_.x() << ", " << current_.y() << std::endl;
-    // check current_'s surrounding cells
-    int row = current_.x(); // the x position is the row index (makes sense because it's in the same line)
-    int col = current_.y();
-    std::cout << maze_[row][col] << std::endl; // current
+    // analyze current position and return possible moves by checking current_'s surrounding cells
+    int row = current_.x(); // the x position is the row index
+    int col = current_.y(); // the y position is the col index 
+    // std::cout << maze_[row][col] << std::endl; // current
     // i need to check if right is a good position (NOT OUT OF BOUNDS and reachable)
     if (col + 1 <= 9) {
         char cell = maze_[row][col + 1]; // next column same row -> right
-        std::cout << cell << std::endl;
-        if (cell == ' ') {
+        if (cell != '*') {
             position right(row, col + 1);
             possible_moves.push_back(right);
         }
     }
     if (col - 1 >= 0) {
         char cell = maze_[row][col - 1]; // prev column same row -> left
-        std::cout << cell << std::endl;
-        if (cell == ' '){
+        if (cell != '*'){
             position left(row, col - 1);
             possible_moves.push_back(left);
         }
     }
     if (row + 1 <= 8) {
         char cell = maze_[row + 1][col]; // same column next row -> down
-        std::cout << cell << std::endl; 
-        if (cell == ' ') {
+        if (cell != '*') {
             position down(row + 1, col);
             possible_moves.push_back(down);
         }
     }
     if (row - 1 >= 0) {
         char cell = maze_[row - 1][col]; // same column prev row -> up
-        std::cout << cell << std::endl;
-        if (cell == ' ') {
+        if (cell != '*') {
             position up(row - 1, col);
             possible_moves.push_back(up);
         }
@@ -81,9 +74,15 @@ std::vector<position> maze::possible_moves() {
 
 void maze::print_maze() {
     for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 9; j++)
-            std::cout << maze_[i][j];
+        for (int j = 0; j < 9; j++) {
+            if (position(i, j) == current_) {
+                std::cout << 'C';
+            } else {
+                std::cout << maze_[i][j];
+            }
+        }
         std::cout << std::endl;
     }
 }
+
 #endif

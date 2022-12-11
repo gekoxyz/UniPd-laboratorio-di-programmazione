@@ -4,21 +4,34 @@
 #include <iostream>
 #include <vector>
 
-#include "./../include/maze.h"
+// #include "./../include/maze.h"
+#include "./../include/randomrobot.h"
 
 using namespace std;
 
 int main() {
-    // TODO: parse input matrix
-    // * -> not reachable
-    // E -> exit, where the robot exits
-    // S -> start, where the robot starts
-    vector<position> possible_moves;
+    cout << "creating maze object" << endl;
     maze maze("maze.txt");
+
+    cout << "possible moves:" << endl;
+    vector<position> possible_moves;
     possible_moves = maze.possible_moves();
     for(auto move: possible_moves) {
         cout << move.to_string() << endl; 
     }
-    cout << endl;
+
+    cout << "creating random robot" << endl;
+    randomrobot randomrobot;
+    cout << "calling move of randomrobot" << endl;
+    // while(!maze.finished()) {
+    //     // cout << "CURRENT -> " << maze.current().to_string() << endl;
+    //     randomrobot.move(maze);
+    //     maze.print_maze();
+    // }
+    while (!maze.finished()) {
+        randomrobot.move(maze);
+        maze.print_maze();
+    }
+    cout << "FINISHED MAZE!" << endl;
     return 0;
 }

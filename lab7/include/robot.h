@@ -11,7 +11,7 @@
 
 class robot {
 public:
-    virtual position move(maze &maze);
+    virtual void move(maze &maze) = 0;
 
 private:
 };

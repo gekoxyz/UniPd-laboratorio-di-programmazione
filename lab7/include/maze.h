@@ -16,9 +16,12 @@ class maze {
     // maze.txt is the default maze, specify a new maze if you want a new maze
     maze(std::string filename = "./../assets/maze.txt");
     std::vector<position> possible_moves();
+    void move(position p) { current_ = p; } // TODO: CHECK THAT P IS AN ELEMENT OF possible_moves()
     void print_maze();
+    bool finished() { return current_ == end_; }
+    position current() { return current_; }
 
-    private:
+private:
     std::string filename_;
     char maze_[8][9];
     position start_;

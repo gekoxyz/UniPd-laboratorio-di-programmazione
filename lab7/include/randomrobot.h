@@ -6,11 +6,15 @@
 #ifndef RANDOMROBOT_H
 #define RANDOMROBOT_H
 
+#include <cstdlib>
+#include <ctime>
+
 #include "robot.h"
 
 class randomrobot : public robot {
 public:
-    position move(maze &maze);
+    randomrobot() { srand((unsigned)time(NULL)); }
+    void move(maze &maze);
 
 private:
 };

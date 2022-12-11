@@ -12,6 +12,9 @@ public:
     }
     int x() { return x_; }
     int y() { return y_; }
+    bool operator==(position other){
+        return (this->x_ == other.x() && this->y_ == other.y());
+    }
 
     std::string to_string() {
         std::stringstream ss;
