@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-// #include "./../include/maze.h"
+#include "./../include/maze.h"
 #include "./../include/randomrobot.h"
 
 using namespace std;

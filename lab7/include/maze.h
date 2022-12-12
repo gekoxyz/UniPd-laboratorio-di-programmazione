@@ -23,7 +23,7 @@ class maze {
 
 private:
     std::string filename_;
-    char maze_[8][9];
+    std::vector<std::vector<char>> maze_;
     position start_;
     position end_;
     position current_;

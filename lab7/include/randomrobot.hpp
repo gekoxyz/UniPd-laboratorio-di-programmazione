@@ -2,18 +2,13 @@
 #define RANDOMROBOT_HPP
 
 void randomrobot::move(maze &maze) {
-    // call for available move
-    std::cout << "CALLED MOVE OF RANDOMROBOT" << std::endl;
+    // call for available move (i always have an available move except if the start position is trapped)
+    // TODO: check if start position is trapped
     std::vector<position> possible_moves = maze.possible_moves();
     if (possible_moves.size() > 0) {
-        // choose a move randomly
+        // choose a move randomly, moves_number is short because you have only 8 possible moves
         short moves_number = possible_moves.size();
-        for (auto m : possible_moves) {
-            std::cout << m.to_string() << ", ";
-        }
-        std::cout << "available moves: " << moves_number << std::endl;
         short random_move = rand() % moves_number;
-        std::cout << "chose move: " << random_move << std::endl;
         // moving to the chosen position
         maze.move(possible_moves.at(random_move));
     }
